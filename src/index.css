@@ -1,0 +1,15 @@
+@layer base {
+  .font-elegant {
+    font-family: 'Great Vibes', cursive;
+    font-weight: 500;
+  }
+  
+  .font-logo {
+    font-family: 'Fleur De Leah', cursive;
+    font-weight: 400;
+  }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
