@@ -87,7 +87,7 @@ function App() {
           <div className="absolute inset-0 bg-gradient-to-br from-stone-50/80 to-stone-100/80"></div>
         </div>
         
-        <div className="max-w-6xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto text-center relative z-10">
           <h1 className="text-5xl md:text-7xl font-logo text-stone-800 mb-6 leading-tight">
             Nikas guldkant
           </h1>
