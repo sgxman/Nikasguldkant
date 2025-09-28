@@ -201,6 +201,9 @@ function App() {
             </div>
             <h3 className="text-3xl font-semibold text-stone-800 mb-4">Ring mig direkt</h3>
             <p className="text-4xl font-bold text-stone-800 mb-6">0XX-XXX XX XX</p>
+            <p className="text-stone-600 text-lg">
+              Eller skicka ett sms så återkommer jag till er
+            </p>
           </div>
         </div>
       </section>
