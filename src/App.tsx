@@ -135,7 +135,7 @@ function App() {
               Expertis för alla livets högtider
             </h2>
             <p className="text-xl text-stone-600 max-w-3xl mx-auto leading-relaxed">
-              Med års av erfarenhet hjälper jag dig skapa minnesvärda stunder, oavsett tillfälle
+              Med år av erfarenhet hjälper jag dig skapa minnesvärda stunder, oavsett tillfälle
             </p>
           </div>
 
