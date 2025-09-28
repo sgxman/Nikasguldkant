@@ -23,7 +23,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build
+        run: npm run deploy
 
       # Publicera till gh-pages-branch (kräver gh-pages som dependency: npm install --save-dev gh-pages)
       - name: Deploy to gh-pages
