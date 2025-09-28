@@ -101,7 +101,7 @@ function App() {
       </section>
 
       {/* Sortiment Section */}
-      <section id="sortiment" className="py-24 bg-white">
+      <section id="sortiment" className="py-24 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold text-stone-800 mb-6">
@@ -131,7 +131,7 @@ function App() {
       </section>
 
       {/* Tillfällen Section */}
-      <section id="tillfallen" className="py-24 bg-stone-50">
+      <section id="tillfallen" className="py-24 bg-stone-50 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold text-stone-800 mb-6">
@@ -145,7 +145,7 @@ function App() {
       </section>
 
       {/* Process Section */}
-      <section id="hur-det-fungerar" className="py-24 bg-white">
+      <section id="hur-det-fungerar" className="py-24 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold text-stone-800 mb-6">
@@ -193,7 +193,7 @@ function App() {
       </section>
 
       {/* Kontakt Section */}
-      <section id="kontakt" className="py-24 bg-stone-800">
+      <section id="kontakt" className="py-24 bg-stone-800 scroll-mt-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
             Redo att planera ditt evenemang?
