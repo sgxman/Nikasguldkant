@@ -104,7 +104,7 @@ function App() {
             </button>
             <button 
               onClick={() => scrollToSection('kontakt')}
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-gray-900 transition-all duration-200 flex items-center justify-center shadow-xl backdrop-blur-sm font-elegant"
+              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-gray-900 transition-all duration-200 flex items-center justify-center shadow-xl backdrop-blur-sm"
             >
               Kontakta mig
             </button>
@@ -130,7 +130,7 @@ function App() {
                 <Wine className="h-8 w-8 text-amber-600" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3 font-elegant">Porslin & glas</h3>
-              <p className="text-gray-600 font-elegant">Tallrikar, glas, muggar, karaffer och elegant servering</p>
+              <p className="text-gray-600">Tallrikar, glas, muggar, karaffer och elegant servering</p>
             </div>
 
             <div className="bg-gradient-to-br from-blue-50 to-sky-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow duration-300">
@@ -138,7 +138,7 @@ function App() {
                 <span className="text-2xl">🍽️</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3 font-elegant">Bestick & servering</h3>
-              <p className="text-gray-600 font-elegant">Knivar, gafflar, skedar och vackra uppläggningsfat</p>
+              <p className="text-gray-600">Knivar, gafflar, skedar och vackra uppläggningsfat</p>
             </div>
 
             <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow duration-300">
@@ -146,7 +146,7 @@ function App() {
                 <span className="text-2xl">🧺</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3 font-elegant">Textilier</h3>
-              <p className="text-gray-600 font-elegant">Dukar, servetter, filtar och linne för perfekt dukning</p>
+              <p className="text-gray-600">Dukar, servetter, filtar och linne för perfekt dukning</p>
             </div>
 
             <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow duration-300">
@@ -154,7 +154,7 @@ function App() {
                 <span className="text-2xl">🕯️</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3 font-elegant">Tillbehör</h3>
-              <p className="text-gray-600 font-elegant">Ljusstakar, termosar, skålar och andra festtillbehör</p>
+              <p className="text-gray-600">Ljusstakar, termosar, skålar och andra festtillbehör</p>
             </div>
           </div>
         </div>
@@ -175,26 +175,26 @@ function App() {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
               <span className="text-4xl mb-4 block">💒</span>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3 font-elegant">Bröllop</h3>
-              <p className="text-gray-600 text-lg font-elegant">Elegant dukning för den stora dagen. Jag hjälper er skapa minnen som varar för evigt.</p>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Bröllop</h3>
+              <p className="text-gray-600 text-lg">Elegant dukning för den stora dagen. Jag hjälper er skapa minnen som varar för evigt.</p>
             </div>
 
             <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
               <span className="text-4xl mb-4 block">🎉</span>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3 font-elegant">Fester & kalas</h3>
-              <p className="text-gray-600 text-lg font-elegant">Stort som smått – jag har utrustning för alla typer av festligheter och celebrationer.</p>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Fester & kalas</h3>
+              <p className="text-gray-600 text-lg">Stort som smått – jag har utrustning för alla typer av festligheter och celebrationer.</p>
             </div>
 
             <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
               <span className="text-4xl mb-4 block">🕊️</span>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3 font-elegant">Minnesstunder & begravningar</h3>
-              <p className="text-gray-600 text-lg font-elegant">Stilrent och diskret för värdiga minnesstunder i svåra stunder.</p>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Minnesstunder & begravningar</h3>
+              <p className="text-gray-600 text-lg">Stilrent och diskret för värdiga minnesstunder i svåra stunder.</p>
             </div>
 
             <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
               <span className="text-4xl mb-4 block">🏢</span>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3 font-elegant">Företagsevent</h3>
-              <p className="text-gray-600 text-lg font-elegant">Mingel, konferens eller firmafest – professionell service för företagstillställningar.</p>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Företagsevent</h3>
+              <p className="text-gray-600 text-lg">Mingel, konferens eller firmafest – professionell service för företagstillställningar.</p>
             </div>
           </div>
         </div>
@@ -218,7 +218,7 @@ function App() {
                 <span className="text-3xl">📋</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3 font-elegant">Välj produkter</h3>
-              <p className="text-gray-600 font-elegant">Kontakta mig så hjälper jag dig välja rätt produkter för ditt evenemang</p>
+              <p className="text-gray-600">Kontakta mig så hjälper jag dig välja rätt produkter för ditt evenemang</p>
             </div>
 
             <div className="text-center">
@@ -226,7 +226,7 @@ function App() {
                 <span className="text-3xl">🚚</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3 font-elegant">Leverans</h3>
-              <p className="text-gray-600 font-elegant">Jag levererar eller du hämtar själv – jag anpassar mig efter dina behov</p>
+              <p className="text-gray-600">Jag levererar eller du hämtar själv – jag anpassar mig efter dina behov</p>
             </div>
 
             <div className="text-center">
@@ -234,7 +234,7 @@ function App() {
                 <span className="text-3xl">🥂</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3 font-elegant">Njut av festen</h3>
-              <p className="text-gray-600 font-elegant">Använd utrustningen och fokusera på att ha en fantastisk fest</p>
+              <p className="text-gray-600">Använd utrustningen och fokusera på att ha en fantastisk fest</p>
             </div>
 
             <div className="text-center">
@@ -242,7 +242,7 @@ function App() {
                 <span className="text-3xl">✨</span>
               </div>
              <h3 className="text-xl font-semibold text-gray-900 mb-3 font-elegant">Lämna tillbaka</h3>
-              <p className="text-gray-600 font-elegant">Lämna tillbaka odiskat – jag sköter disken så du slipper</p>
+              <p className="text-gray-600">Lämna tillbaka odiskat – jag sköter disken så du slipper</p>
             </div>
           </div>
         </div>
