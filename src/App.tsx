@@ -88,7 +88,7 @@ function App() {
             Nikas guldkant
           </h1>
           <p className="text-2xl md:text-3xl font-logo text-stone-600 mb-8">
-            porslin, glas & tillbehör
+            Porslin, Glas & Tillbehör
           </p>
           <p className="text-xl md:text-2xl text-stone-700 mb-12 max-w-4xl mx-auto leading-relaxed">
             Professionell festuthyrning för alla tillfällen. Jag levererar kvalitet, elegans och trygghet 
@@ -109,7 +109,7 @@ function App() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
             <div className="bg-stone-50 rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
                 <div className="w-12 h-12 bg-stone-100 rounded-full"></div>
