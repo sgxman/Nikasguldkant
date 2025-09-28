@@ -82,9 +82,9 @@ function App() {
           <img 
             src="https://www.dropbox.com/scl/fi/cq5njj2dqykkta6e5yeeo/IMG_3742-2025-09-28.jpeg?rlkey=tpc62so4irte9x7weapgxsaki&st=uwzyc0we&raw=1" 
             alt="Nikas guldkant table setting" 
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover opacity-50"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-stone-50/80 to-stone-100/80"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-stone-50/60 to-stone-100/60"></div>
         </div>
         
         <div className="max-w-6xl mx-auto text-center relative z-10">
