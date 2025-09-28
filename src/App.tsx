@@ -323,7 +323,7 @@ function App() {
               Vem är jag?
             </h2>
             <p className="text-xl text-stone-600 max-w-3xl mx-auto leading-relaxed">
-              Jag är Nika.<br />Kvinnan som grundade av Nikas guldkant. <br />Med en passion för fest och service strävar jag efter att göra varje evenemang speciellt genom att erbjuda högkvalitativ uthyrning och personlig service.
+              Jag är Nika.<br />Kvinnan som grundade Nikas guldkant. <br />Med en passion för fest och service strävar jag efter att göra varje evenemang speciellt genom att erbjuda högkvalitativ uthyrning och personlig service.
             </p>
           </div>
         </div>
