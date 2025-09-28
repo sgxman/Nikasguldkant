@@ -114,34 +114,14 @@ function App() {
               <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
                 <div className="w-12 h-12 bg-stone-100 rounded-full"></div>
               </div>
-              <h3 className="text-2xl font-semibold text-stone-800 mb-4">Porslin & Keramik</h3>
-              <p className="text-stone-600 leading-relaxed">Eleganta tallrikar, skålar och serveringsfat i olika stilar och storlekar</p>
-            </div>
-
-            <div className="bg-stone-50 rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
-                <div className="w-8 h-12 bg-stone-100 rounded-sm"></div>
-              </div>
-              <h3 className="text-2xl font-semibold text-stone-800 mb-4">Glas & Karaffer</h3>
-              <p className="text-stone-600 leading-relaxed">Kristallklara glas, vinkupor, champagneglas och vackra karaffer</p>
-            </div>
-
-            <div className="bg-stone-50 rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
-                <div className="w-2 h-12 bg-stone-100 rounded-full mx-1"></div>
-                <div className="w-2 h-12 bg-stone-100 rounded-full mx-1"></div>
-                <div className="w-2 h-12 bg-stone-100 rounded-full mx-1"></div>
-              </div>
-              <h3 className="text-2xl font-semibold text-stone-800 mb-4">Bestick & Servering</h3>
-              <p className="text-stone-600 leading-relaxed">Högkvalitativa bestick och professionella serveringstillbehör</p>
+              <h3 className="text-2xl font-semibold text-stone-800 mb-4">Porslin & Glas</h3>
             </div>
 
             <div className="bg-stone-50 rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
                 <div className="w-14 h-10 bg-stone-100 rounded-lg"></div>
               </div>
-              <h3 className="text-2xl font-semibold text-stone-800 mb-4">Textilier & Tillbehör</h3>
-              <p className="text-stone-600 leading-relaxed">Linnedukar, servetter, ljusstakar och andra festtillbehör</p>
+              <h3 className="text-2xl font-semibold text-stone-800 mb-4">Dekor & Tillbehör</h3>
             </div>
           </div>
         </div>
