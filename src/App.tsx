@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, ChevronDown, Phone, Mail, MapPin, Wine, Utensils, Heart, Building2, Truck, CheckCircle, ArrowRight } from 'lucide-react';
+import { Menu, X, Phone, ArrowRight } from 'lucide-react';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,30 +17,30 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-50">
+      <header className="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-50 border-b border-stone-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-20">
             <div className="flex items-center">
-              <span className="text-2xl font-logo text-gray-900">Nikas guldkant</span>
+              <span className="text-3xl font-logo text-stone-800">Nikas guldkant</span>
             </div>
             
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-8">
-              <button onClick={() => scrollToSection('hem')} className="text-gray-700 hover:text-amber-600 font-medium transition-colors">
+            <nav className="hidden md:flex space-x-12">
+              <button onClick={() => scrollToSection('hem')} className="text-stone-700 hover:text-stone-900 font-medium transition-colors text-lg">
                 Hem
               </button>
-              <button onClick={() => scrollToSection('produkter')} className="text-gray-700 hover:text-amber-600 font-medium transition-colors">
-                Våra produkter
+              <button onClick={() => scrollToSection('produkter')} className="text-stone-700 hover:text-stone-900 font-medium transition-colors text-lg">
+                Produkter
               </button>
-              <button onClick={() => scrollToSection('tillfallen')} className="text-gray-700 hover:text-amber-600 font-medium transition-colors">
+              <button onClick={() => scrollToSection('tillfallen')} className="text-stone-700 hover:text-stone-900 font-medium transition-colors text-lg">
                 Tillfällen
               </button>
-              <button onClick={() => scrollToSection('hur-det-fungerar')} className="text-gray-700 hover:text-amber-600 font-medium transition-colors">
-                Så fungerar det
+              <button onClick={() => scrollToSection('hur-det-fungerar')} className="text-stone-700 hover:text-stone-900 font-medium transition-colors text-lg">
+                Process
               </button>
-              <button onClick={() => scrollToSection('kontakt')} className="text-gray-700 hover:text-amber-600 font-medium transition-colors">
+              <button onClick={() => scrollToSection('kontakt')} className="bg-stone-800 text-white px-6 py-3 rounded-lg font-medium hover:bg-stone-900 transition-colors">
                 Kontakt
               </button>
             </nav>
@@ -49,7 +49,7 @@ function App() {
             <div className="md:hidden">
               <button
                 onClick={toggleMenu}
-                className="text-gray-700 hover:text-amber-600 transition-colors"
+                className="text-stone-700 hover:text-stone-900 transition-colors"
               >
                 {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </button>
@@ -58,21 +58,21 @@ function App() {
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="md:hidden bg-white border-t">
+            <div className="md:hidden bg-white border-t border-stone-100">
               <div className="px-2 pt-2 pb-3 space-y-1">
-                <button onClick={() => scrollToSection('hem')} className="block w-full text-left px-3 py-2 text-gray-700 hover:text-amber-600 font-medium">
+                <button onClick={() => scrollToSection('hem')} className="block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg">
                   Hem
                 </button>
-                <button onClick={() => scrollToSection('produkter')} className="block w-full text-left px-3 py-2 text-gray-700 hover:text-amber-600 font-medium">
-                  Våra produkter
+                <button onClick={() => scrollToSection('produkter')} className="block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg">
+                  Produkter
                 </button>
-                <button onClick={() => scrollToSection('tillfallen')} className="block w-full text-left px-3 py-2 text-gray-700 hover:text-amber-600 font-medium">
+                <button onClick={() => scrollToSection('tillfallen')} className="block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg">
                   Tillfällen
                 </button>
-                <button onClick={() => scrollToSection('hur-det-fungerar')} className="block w-full text-left px-3 py-2 text-gray-700 hover:text-amber-600 font-medium">
-                  Så fungerar det
+                <button onClick={() => scrollToSection('hur-det-fungerar')} className="block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg">
+                  Process
                 </button>
-                <button onClick={() => scrollToSection('kontakt')} className="block w-full text-left px-3 py-2 text-gray-700 hover:text-amber-600 font-medium">
+                <button onClick={() => scrollToSection('kontakt')} className="block w-full text-left px-3 py-3 bg-stone-800 text-white font-medium rounded-lg mx-3 mt-2">
                   Kontakt
                 </button>
               </div>
@@ -82,215 +82,238 @@ function App() {
       </header>
 
       {/* Hero Section */}
-      <section id="hem" className="relative py-20 px-4 sm:px-6 lg:px-8 bg-cover bg-center bg-no-repeat" style={{backgroundImage: 'url(https://images.pexels.com/photos/1395964/pexels-photo-1395964.jpeg?auto=compress&cs=tinysrgb&w=1600)'}}>
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/30"></div>
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            <span className="relative z-10 text-white drop-shadow-lg font-logo text-5xl md:text-7xl">Nikas guldkant</span>
-            <span className="block text-amber-300 relative z-10 drop-shadow-lg font-logo text-2xl md:text-3xl">porslin, glas & tillbehör</span>
+      <section id="hem" className="relative py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-stone-50 to-stone-100">
+        <div className="max-w-6xl mx-auto text-center">
+          <h1 className="text-5xl md:text-7xl font-logo text-stone-800 mb-6 leading-tight">
+            Nikas guldkant
           </h1>
-          <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto leading-relaxed relative z-10 drop-shadow-lg font-elegant">
-            Vi hyr ut porslin, glas, bestick, dukar, filtar, karaffer och mycket mer. 
-            Oavsett om du planerar en liten middag, en stor fest, ett bröllop eller en minnesstund.
+          <p className="text-2xl md:text-3xl font-logo text-stone-600 mb-8">
+            porslin, glas & tillbehör
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
+          <p className="text-xl md:text-2xl text-stone-700 mb-12 max-w-4xl mx-auto leading-relaxed">
+            Professionell festuthyrning för alla tillfällen. Jag levererar kvalitet, elegans och trygghet 
+            så att du kan fokusera på det som verkligen betyder något – dina gäster och minnen som skapas.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <button 
               onClick={() => scrollToSection('produkter')}
-              className="bg-amber-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-amber-700 transform hover:scale-105 transition-all duration-200 shadow-xl flex items-center justify-center"
+              className="bg-stone-800 text-white px-10 py-4 rounded-lg font-semibold text-lg hover:bg-stone-900 transform hover:scale-105 transition-all duration-200 shadow-lg flex items-center justify-center"
             >
-              Se våra produkter
-              <ArrowRight className="ml-2 h-5 w-5" />
+              Utforska sortiment
+              <ArrowRight className="ml-3 h-5 w-5" />
             </button>
             <button 
               onClick={() => scrollToSection('kontakt')}
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-gray-900 transition-all duration-200 flex items-center justify-center shadow-xl backdrop-blur-sm"
+              className="border-2 border-stone-800 text-stone-800 px-10 py-4 rounded-lg font-semibold text-lg hover:bg-stone-800 hover:text-white transition-all duration-200 flex items-center justify-center"
             >
-              Kontakta mig
+              <Phone className="mr-3 h-5 w-5" />
+              Ring direkt
             </button>
           </div>
         </div>
       </section>
 
       {/* Produkter Section */}
-      <section id="produkter" className="py-20 bg-white">
+      <section id="produkter" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Allt du behöver för en lyckad fest
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold text-stone-800 mb-6">
+              Komplett sortiment för alla evenemang
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Från elegant porslin till praktiska tillbehör – vi har allt för ditt evenemang
+            <p className="text-xl text-stone-600 max-w-3xl mx-auto leading-relaxed">
+              Från intima middagar till storslagna celebrationer – jag har allt du behöver för en perfekt upplevelse
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow duration-300">
-              <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Wine className="h-8 w-8 text-amber-600" />
+            <div className="bg-stone-50 rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
+                <div className="w-12 h-12 bg-stone-100 rounded-full"></div>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3 font-elegant">Porslin & glas</h3>
-              <p className="text-gray-600">Tallrikar, glas, muggar, karaffer och elegant servering</p>
+              <h3 className="text-2xl font-semibold text-stone-800 mb-4">Porslin & Keramik</h3>
+              <p className="text-stone-600 leading-relaxed">Eleganta tallrikar, skålar och serveringsfat i olika stilar och storlekar</p>
             </div>
 
-            <div className="bg-gradient-to-br from-blue-50 to-sky-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow duration-300">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🍽️</span>
+            <div className="bg-stone-50 rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
+                <div className="w-8 h-12 bg-stone-100 rounded-sm"></div>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3 font-elegant">Bestick & servering</h3>
-              <p className="text-gray-600">Knivar, gafflar, skedar och vackra uppläggningsfat</p>
+              <h3 className="text-2xl font-semibold text-stone-800 mb-4">Glas & Karaffer</h3>
+              <p className="text-stone-600 leading-relaxed">Kristallklara glas, vinkupor, champagneglas och vackra karaffer</p>
             </div>
 
-            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow duration-300">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🧺</span>
+            <div className="bg-stone-50 rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
+                <div className="w-2 h-12 bg-stone-100 rounded-full mx-1"></div>
+                <div className="w-2 h-12 bg-stone-100 rounded-full mx-1"></div>
+                <div className="w-2 h-12 bg-stone-100 rounded-full mx-1"></div>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3 font-elegant">Textilier</h3>
-              <p className="text-gray-600">Dukar, servetter, filtar och linne för perfekt dukning</p>
+              <h3 className="text-2xl font-semibold text-stone-800 mb-4">Bestick & Servering</h3>
+              <p className="text-stone-600 leading-relaxed">Högkvalitativa bestick och professionella serveringstillbehör</p>
             </div>
 
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow duration-300">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🕯️</span>
+            <div className="bg-stone-50 rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
+                <div className="w-14 h-10 bg-stone-100 rounded-lg"></div>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3 font-elegant">Tillbehör</h3>
-              <p className="text-gray-600">Ljusstakar, termosar, skålar och andra festtillbehör</p>
+              <h3 className="text-2xl font-semibold text-stone-800 mb-4">Textilier & Tillbehör</h3>
+              <p className="text-stone-600 leading-relaxed">Linnedukar, servetter, ljusstakar och andra festtillbehör</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Tillfällen Section */}
-      <section id="tillfallen" className="py-20 bg-gradient-to-br from-amber-50 to-orange-50">
+      <section id="tillfallen" className="py-24 bg-stone-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Jag hjälper dig vid alla typer av tillställningar
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold text-stone-800 mb-6">
+              Expertis för alla livets högtider
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Från intima middagar till stora celebrationer – jag har erfarenheten och utrustningen
+            <p className="text-xl text-stone-600 max-w-3xl mx-auto leading-relaxed">
+              Med års av erfarenhet hjälper jag dig skapa minnesvärda stunder, oavsett tillfälle
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
-              <span className="text-4xl mb-4 block">💒</span>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Bröllop</h3>
-              <p className="text-gray-600 text-lg">Elegant dukning för den stora dagen. Jag hjälper er skapa minnen som varar för evigt.</p>
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="bg-white rounded-2xl p-10 shadow-sm hover:shadow-lg transition-all duration-300">
+              <h3 className="text-3xl font-semibold text-stone-800 mb-6">Bröllop & Ceremonier</h3>
+              <p className="text-stone-600 text-lg leading-relaxed mb-6">
+                Din stora dag förtjänar perfektion. Jag skapar en elegant och harmonisk dukning som speglar er kärlek och stil.
+              </p>
+              <div className="text-stone-500">
+                <p>• Komplett bröllopsutrustning</p>
+                <p>• Personlig konsultation</p>
+                <p>• Leverans och upphämtning</p>
+              </div>
             </div>
 
-            <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
-              <span className="text-4xl mb-4 block">🎉</span>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Fester & kalas</h3>
-              <p className="text-gray-600 text-lg">Stort som smått – jag har utrustning för alla typer av festligheter och celebrationer.</p>
+            <div className="bg-white rounded-2xl p-10 shadow-sm hover:shadow-lg transition-all duration-300">
+              <h3 className="text-3xl font-semibold text-stone-800 mb-6">Företagsevent</h3>
+              <p className="text-stone-600 text-lg leading-relaxed mb-6">
+                Professionella lösningar för konferenser, mingel och företagsfester. Kvalitet som stärker ert varumärke.
+              </p>
+              <div className="text-stone-500">
+                <p>• Skalbar för alla storlekar</p>
+                <p>• Diskret och professionell service</p>
+                <p>• Flexibla leveransalternativ</p>
+              </div>
             </div>
 
-            <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
-              <span className="text-4xl mb-4 block">🕊️</span>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Minnesstunder & begravningar</h3>
-              <p className="text-gray-600 text-lg">Stilrent och diskret för värdiga minnesstunder i svåra stunder.</p>
+            <div className="bg-white rounded-2xl p-10 shadow-sm hover:shadow-lg transition-all duration-300">
+              <h3 className="text-3xl font-semibold text-stone-800 mb-6">Privata Fester</h3>
+              <p className="text-stone-600 text-lg leading-relaxed mb-6">
+                Från intima middagar till stora kalas. Jag hjälper dig skapa den perfekta atmosfären för dina gäster.
+              </p>
+              <div className="text-stone-500">
+                <p>• Anpassat efter din stil</p>
+                <p>• Alla typer av fester</p>
+                <p>• Personlig rådgivning</p>
+              </div>
             </div>
 
-            <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
-              <span className="text-4xl mb-4 block">🏢</span>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Företagsevent</h3>
-              <p className="text-gray-600 text-lg">Mingel, konferens eller firmafest – professionell service för företagstillställningar.</p>
+            <div className="bg-white rounded-2xl p-10 shadow-sm hover:shadow-lg transition-all duration-300">
+              <h3 className="text-3xl font-semibold text-stone-800 mb-6">Minnesstunder</h3>
+              <p className="text-stone-600 text-lg leading-relaxed mb-6">
+                Värdiga och stilrena lösningar för begravningar och minnesgudstjänster. Diskret service i svåra stunder.
+              </p>
+              <div className="text-stone-500">
+                <p>• Respektfull hantering</p>
+                <p>• Traditionell elegans</p>
+                <p>• Omtänksam service</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Hur det fungerar Section */}
-      <section id="hur-det-fungerar" className="py-20 bg-white">
+      {/* Process Section */}
+      <section id="hur-det-fungerar" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Enkelt och smidigt – så här går det till
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold text-stone-800 mb-6">
+              Smidig process från start till mål
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Jag gör processen så enkel som möjligt så du kan fokusera på det viktiga – din fest
+            <p className="text-xl text-stone-600 max-w-3xl mx-auto leading-relaxed">
+              Jag tar hand om alla detaljer så du kan fokusera på det viktiga
             </p>
           </div>
 
           <div className="grid md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-3xl">📋</span>
+            <div className="text-center group">
+              <div className="w-24 h-24 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-8 group-hover:bg-stone-200 transition-colors duration-300">
+                <span className="text-3xl font-bold text-stone-600">1</span>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3 font-elegant">Välj produkter</h3>
-              <p className="text-gray-600">Kontakta mig så hjälper jag dig välja rätt produkter för ditt evenemang</p>
+              <h3 className="text-2xl font-semibold text-stone-800 mb-4">Konsultation</h3>
+              <p className="text-stone-600 leading-relaxed">Ring mig så diskuterar vi dina behov, antal gäster och önskemål för evenemanget</p>
             </div>
 
-            <div className="text-center">
-              <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-3xl">🚚</span>
+            <div className="text-center group">
+              <div className="w-24 h-24 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-8 group-hover:bg-stone-200 transition-colors duration-300">
+                <span className="text-3xl font-bold text-stone-600">2</span>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3 font-elegant">Leverans</h3>
-              <p className="text-gray-600">Jag levererar eller du hämtar själv – jag anpassar mig efter dina behov</p>
+              <h3 className="text-2xl font-semibold text-stone-800 mb-4">Planering</h3>
+              <p className="text-stone-600 leading-relaxed">Jag sätter ihop ett skräddarsytt paket och planerar leverans efter ditt schema</p>
             </div>
 
-            <div className="text-center">
-              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-3xl">🥂</span>
+            <div className="text-center group">
+              <div className="w-24 h-24 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-8 group-hover:bg-stone-200 transition-colors duration-300">
+                <span className="text-3xl font-bold text-stone-600">3</span>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3 font-elegant">Njut av festen</h3>
-              <p className="text-gray-600">Använd utrustningen och fokusera på att ha en fantastisk fest</p>
+              <h3 className="text-2xl font-semibold text-stone-800 mb-4">Leverans</h3>
+              <p className="text-stone-600 leading-relaxed">Punktlig leverans av ren och kontrollerad utrustning direkt till din dörr</p>
             </div>
 
-            <div className="text-center">
-              <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-3xl">✨</span>
+            <div className="text-center group">
+              <div className="w-24 h-24 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-8 group-hover:bg-stone-200 transition-colors duration-300">
+                <span className="text-3xl font-bold text-stone-600">4</span>
               </div>
-             <h3 className="text-xl font-semibold text-gray-900 mb-3 font-elegant">Lämna tillbaka</h3>
-              <p className="text-gray-600">Lämna tillbaka odiskat – jag sköter disken så du slipper</p>
+              <h3 className="text-2xl font-semibold text-stone-800 mb-4">Avslut</h3>
+              <p className="text-stone-600 leading-relaxed">Lämna tillbaka odiskat – jag sköter rengöringen så du kan vila efter festen</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Kontakt Section */}
-      <section id="kontakt" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Boka eller fråga mig direkt
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Ring mig så hjälper jag dig att planera din beställning
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div className="lg:col-span-2">
-              <div className="max-w-2xl mx-auto">
-                <h3 className="text-2xl font-semibold text-gray-900 mb-8 font-elegant text-center">Kontaktinformation</h3>
-                <div className="text-center">
-                  <div className="w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <span className="text-3xl">📞</span>
-                  </div>
-                  <h4 className="text-2xl font-semibold text-gray-900 mb-4 font-elegant">Ring mig</h4>
-                  <p className="text-3xl font-bold text-amber-600 mb-3">0XX-XXX XX XX</p>
-                </div>
+      <section id="kontakt" className="py-24 bg-stone-800">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
+            Redo att planera ditt evenemang?
+          </h2>
+          <p className="text-xl text-stone-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+            Ring mig idag så hjälper jag dig skapa en oförglömlig upplevelse för dig och dina gäster
+          </p>
+          
+          <div className="bg-white rounded-2xl p-12 shadow-2xl">
+            <div className="flex items-center justify-center mb-8">
+              <div className="w-20 h-20 bg-stone-100 rounded-full flex items-center justify-center">
+                <Phone className="h-10 w-10 text-stone-600" />
               </div>
             </div>
+            <h3 className="text-3xl font-semibold text-stone-800 mb-4">Ring mig direkt</h3>
+            <p className="text-4xl font-bold text-stone-800 mb-6">0XX-XXX XX XX</p>
+            <p className="text-stone-600 text-lg">
+              Vardagar 9-18 • Helger efter överenskommelse
+            </p>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-stone-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="flex items-center justify-center mb-4">
-              <span className="text-2xl font-logo">Nikas guldkant</span>
+            <div className="flex items-center justify-center mb-6">
+              <span className="text-3xl font-logo text-stone-300">Nikas guldkant</span>
             </div>
-            <p className="text-gray-400 mb-6">
-              Din partner för minnesvärda evenemang
+            <p className="text-stone-400 text-lg mb-8">
+              Professionell festuthyrning med personlig service
             </p>
-            <div className="flex justify-center space-x-6 text-gray-400">
+            <div className="flex justify-center text-stone-400 text-lg">
               <span>Telefon: 0XX-XXX XX XX</span>
             </div>
-            <div className="mt-8 pt-8 border-t border-gray-800 text-gray-500 text-sm">
+            <div className="mt-12 pt-8 border-t border-stone-800 text-stone-500">
               <p>&copy; 2025 Nikas guldkant. Alla rättigheter förbehållna.</p>
             </div>
           </div>
