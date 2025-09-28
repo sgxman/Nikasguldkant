@@ -28,6 +28,11 @@ jobs:
       - name: Build
         run: npm run deploy
 
+      - name: Set Git user
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
