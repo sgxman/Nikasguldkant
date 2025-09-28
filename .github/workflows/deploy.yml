@@ -25,13 +25,13 @@ jobs:
       - name: Install gh-pages
         run: npm install -g gh-pages
 
-      - name: Build
-        run: npm run deploy
-
       - name: Set Git user
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Build
+        run: npm run deploy
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
