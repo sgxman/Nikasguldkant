@@ -21,11 +21,11 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-50 border-b border-stone-100">
+      <header className="bg-[#50d71e]/40 backdrop-blur-lg shadow-sm sticky top-0 z-50 border-stone-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center">
-              <span className="text-3xl font-logo text-stone-800">Nikas guldkant</span>
+              <span className="text-5xl font-logo text-stone-800">Nikas guldkant</span>
             </div>
 
             {/* Desktop Navigation */}
@@ -78,7 +78,7 @@ function App() {
       </header>
 
       {/* Hero Section */}
-      <section id="hem" className="relative py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-stone-50 to-stone-100 overflow-hidden">
+      <section id="hem" className="relative py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-stone-50 to-stone-100 overflow-hidden scroll-mt-20">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
