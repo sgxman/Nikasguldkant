@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Menu, X, Phone, ArrowRight } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
+import headerimg from './images/bg_4.png';
+import NgkTitleSubtitle from './components/NgkTitleSubtitle';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,7 +27,7 @@ function App() {
             <div className="flex items-center">
               <span className="text-3xl font-logo text-stone-800">Nikas guldkant</span>
             </div>
-            
+
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-12">
               <button onClick={() => scrollToSection('hem')} className="text-stone-700 hover:text-stone-900 font-medium transition-colors text-lg">
@@ -79,32 +81,24 @@ function App() {
       <section id="hem" className="relative py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-stone-50 to-stone-100 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://www.dropbox.com/scl/fi/yub0rt3nu2ltfajjbv7n7/bg_4.png?rlkey=azndce6hgo51k77tyfota8qwy&raw=1" 
-            alt="Nikas guldkant table setting" 
+          <img
+            src={headerimg}
+            alt="Nikas guldkant table setting"
             className="w-full opacity-90"
           />
-          {/* <div className="absolute inset-0 bg-gradient-to-br from-stone-50/60 to-stone-100/60"></div> */}
+          <div className="absolute inset-0 bg-gradient-to-br from-stone-100/10 to-stone-100"></div>
         </div>
-        
-        <div className="max-w-6xl mx-auto text-center relative z-10">
-          <h1 className="text-5xl md:text-7xl font-logo text-stone-800 mb-6 leading-tight">
-            Nikas guldkant
-          </h1>
-          <p className="text-2xl md:text-3xl font-logo text-stone-600 mb-8">
-            Porslin, Glas & Tillbehör
+        <NgkTitleSubtitle title="Nikas guldkant" subtitle="Porslin, Glas & Tillbehör" nineGridAlign='bottomright' />
+      </section>
+
+      <section className="py-16 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-xl md:text-2xl text-stone-700 mb-12 max-w-4xl mx-auto leading-relaxed">
+            Professionell festuthyrning för alla tillfällen.<br />Jag levererar kvalitet, elegans och trygghet
+            så att du kan fokusera på det som verkligen betyder något – dina gäster och minnen som skapas.
           </p>
         </div>
       </section>
-
-          <section className="py-16 bg-white">
-            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-xl md:text-2xl text-stone-700 mb-12 max-w-4xl mx-auto leading-relaxed">
-            Professionell festuthyrning för alla tillfällen. Jag levererar kvalitet, elegans och trygghet 
-            så att du kan fokusera på det som verkligen betyder något – dina gäster och minnen som skapas.
-          </p>
-            </div>
-          </section>
 
       {/* Sortiment Section */}
       <section id="sortiment" className="py-24 bg-white">
@@ -207,7 +201,7 @@ function App() {
           <p className="text-xl text-stone-300 mb-12 max-w-2xl mx-auto leading-relaxed">
             Ring mig idag så hjälper jag dig skapa en oförglömlig upplevelse för dig och dina gäster
           </p>
-          
+
           <div className="bg-white rounded-2xl p-12 shadow-2xl">
             <div className="flex items-center justify-center mb-8">
               <div className="w-20 h-20 bg-stone-100 rounded-full flex items-center justify-center">
