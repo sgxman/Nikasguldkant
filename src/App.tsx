@@ -80,8 +80,8 @@ function App() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.pexels.com/photos/1395967/pexels-photo-1395967.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280&fit=crop" 
-            alt="Elegant table setting" 
+            src="https://www.dropbox.com/scl/fi/cq5njj2dqykkta6e5yeeo/IMG_3742-2025-09-28.jpeg?rlkey=tpc62so4irte9x7weapgxsaki&st=uwzyc0we&raw=1" 
+            alt="Nikas guldkant table setting" 
             className="w-full h-full object-cover opacity-20"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-stone-50/80 to-stone-100/80"></div>
