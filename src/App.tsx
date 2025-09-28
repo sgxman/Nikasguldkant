@@ -66,9 +66,6 @@ function App() {
                 <button onClick={() => scrollToSection('produkter')} className="block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg">
                   Produkter
                 </button>
-                <button onClick={() => scrollToSection('tillfallen')} className="block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg">
-                  Tillfällen
-                </button>
                 <button onClick={() => scrollToSection('hur-det-fungerar')} className="block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg">
                   Process
                 </button>
