@@ -31,11 +31,11 @@ function App() {
               <button onClick={() => scrollToSection('hem')} className="text-stone-700 hover:text-stone-900 font-medium transition-colors text-lg">
                 Hem
               </button>
-              <button onClick={() => scrollToSection('produkter')} className="text-stone-700 hover:text-stone-900 font-medium transition-colors text-lg">
-                Produkter
+              <button onClick={() => scrollToSection('sortiment')} className="text-stone-700 hover:text-stone-900 font-medium transition-colors text-lg">
+                Sortiment
               </button>
               <button onClick={() => scrollToSection('hur-det-fungerar')} className="text-stone-700 hover:text-stone-900 font-medium transition-colors text-lg">
-                Process
+                Hur gör man?
               </button>
               <button onClick={() => scrollToSection('kontakt')} className="bg-stone-800 text-white px-6 py-3 rounded-lg font-medium hover:bg-stone-900 transition-colors">
                 Kontakt
@@ -60,8 +60,8 @@ function App() {
                 <button onClick={() => scrollToSection('hem')} className="block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg">
                   Hem
                 </button>
-                <button onClick={() => scrollToSection('produkter')} className="block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg">
-                  Produkter
+                <button onClick={() => scrollToSection('sortiment')} className="block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg">
+                  Sortiment
                 </button>
                 <button onClick={() => scrollToSection('hur-det-fungerar')} className="block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg">
                   Process
@@ -80,11 +80,11 @@ function App() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://www.dropbox.com/scl/fi/cq5njj2dqykkta6e5yeeo/IMG_3742-2025-09-28.jpeg?rlkey=tpc62so4irte9x7weapgxsaki&st=uwzyc0we&raw=1" 
+            src="https://www.dropbox.com/scl/fi/yub0rt3nu2ltfajjbv7n7/bg_4.png?rlkey=azndce6hgo51k77tyfota8qwy&raw=1" 
             alt="Nikas guldkant table setting" 
-            className="w-full h-full object-cover opacity-50"
+            className="w-full opacity-90"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-stone-50/60 to-stone-100/60"></div>
+          {/* <div className="absolute inset-0 bg-gradient-to-br from-stone-50/60 to-stone-100/60"></div> */}
         </div>
         
         <div className="max-w-6xl mx-auto text-center relative z-10">
@@ -94,15 +94,20 @@ function App() {
           <p className="text-2xl md:text-3xl font-logo text-stone-600 mb-8">
             Porslin, Glas & Tillbehör
           </p>
+        </div>
+      </section>
+
+          <section className="py-16 bg-white">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-xl md:text-2xl text-stone-700 mb-12 max-w-4xl mx-auto leading-relaxed">
             Professionell festuthyrning för alla tillfällen. Jag levererar kvalitet, elegans och trygghet 
             så att du kan fokusera på det som verkligen betyder något – dina gäster och minnen som skapas.
           </p>
-        </div>
-      </section>
+            </div>
+          </section>
 
-      {/* Produkter Section */}
-      <section id="produkter" className="py-24 bg-white">
+      {/* Sortiment Section */}
+      <section id="sortiment" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold text-stone-800 mb-6">
