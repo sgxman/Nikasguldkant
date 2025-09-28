@@ -76,7 +76,17 @@ function App() {
       </header>
 
       {/* Hero Section */}
-      <section id="hem" className="relative py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-stone-50 to-stone-100">
+      <section id="hem" className="relative py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-stone-50 to-stone-100 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.pexels.com/photos/1395967/pexels-photo-1395967.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280&fit=crop" 
+            alt="Elegant table setting" 
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-stone-50/80 to-stone-100/80"></div>
+        </div>
+        
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-5xl md:text-7xl font-logo text-stone-800 mb-6 leading-tight">
             Nikas guldkant
