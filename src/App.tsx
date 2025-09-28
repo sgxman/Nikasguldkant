@@ -270,7 +270,6 @@ function App() {
                   </div>
                   <h4 className="text-2xl font-semibold text-gray-900 mb-4 font-elegant">Ring mig</h4>
                   <p className="text-3xl font-bold text-amber-600 mb-3">0XX-XXX XX XX</p>
-                  <p className="text-lg text-gray-600">Vardagar 9-17</p>
                 </div>
               </div>
             </div>
