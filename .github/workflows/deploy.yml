@@ -25,7 +25,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      # Publicera till gh-pages-branch (kräver gh-pages som dependency: npm install --save-dev gh-pages)
+      # Publicera till github-pages-branch (kräver gh-pages som dependency: npm install --save-dev gh-pages)
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
