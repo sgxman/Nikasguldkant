@@ -8,42 +8,95 @@ function App() {
 
   const [currentSection, setCurrentSection] = useState<string>('');
   const currentSectionRef = useRef<string>('');
+  const scrollDebounceIdRef = useRef<number | null>(null);
+  const lockTimeoutRef = useRef<number | null>(null);
+  const userSelectedRef = useRef<string | null>(null);
+  const userLockUntilRef = useRef<number>(0);
+  const userScrollingRef = useRef<boolean>(false);
+  const scrollEndTimeoutRef = useRef<number | null>(null);  
+
 
   useEffect(() => {
-    const ids = ['hem', 'sortiment', 'vem-ar-jag', 'tillfallen', 'hur-det-fungerar', 'kontakt'];
-    let rafId: number | null = null;
+    const onUserScrollStart = () => {
+      // ignorera om användaren nyligen klickade i menyn (programmatisk scroll)
+      if (userLockUntilRef.current > Date.now()) return;
+
+      // endast första scroll-händelsen i ett "scroll-pass" ska nollställa valet
+      if (!userScrollingRef.current) {
+        userScrollingRef.current = true;
+        userSelectedRef.current = null;
+        // direkt nollställ visuell markering
+        currentSectionRef.current = '';
+        setCurrentSection('');
+        // avbryt eventuell debounce från observern
+        if (scrollDebounceIdRef.current) {
+          window.clearTimeout(scrollDebounceIdRef.current);
+          scrollDebounceIdRef.current = null;
+        }
+      }
+
+      // återställ "scroll-pass" efter kort timeout (så nästa manuella scroll igen reset-:ar)
+      if (scrollEndTimeoutRef.current) window.clearTimeout(scrollEndTimeoutRef.current);
+      scrollEndTimeoutRef.current = window.setTimeout(() => {
+        userScrollingRef.current = false;
+        scrollEndTimeoutRef.current = null;
+      }, 300);
+    };
+
+    window.addEventListener('wheel', onUserScrollStart, { passive: true });
+    window.addEventListener('touchstart', onUserScrollStart, { passive: true });
+    window.addEventListener('scroll', onUserScrollStart, { passive: true });
+
+    return () => {
+      window.removeEventListener('wheel', onUserScrollStart);
+      window.removeEventListener('touchstart', onUserScrollStart);
+      window.removeEventListener('scroll', onUserScrollStart);
+      if (scrollEndTimeoutRef.current) window.clearTimeout(scrollEndTimeoutRef.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    const ids = ['hem', 'sortiment', 'vem_ar_jag', 'tillfallen', 'hur_det_fungerar', 'kontakt'];
+
+    const updateSection = (id: string) => {
+      if (currentSectionRef.current === id) return;
+      currentSectionRef.current = id;
+      setCurrentSection(id);
+    };
 
     const observer = new IntersectionObserver(
       (entries) => {
-        if (rafId) cancelAnimationFrame(rafId);
-        rafId = requestAnimationFrame(() => {
-          // 1) välj det element som syns mest
-          const visible = entries
-            .filter(e => e.isIntersecting)
-            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        // välj element som syns mest eller närmast toppen
+        const visible = entries.filter(e => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        let targetId: string | null = null;
 
-          if (visible) {
-            const id = visible.target.id;
-            if (currentSectionRef.current !== id) {
-              currentSectionRef.current = id;
-              setCurrentSection(id);
-            }
-            return;
-          }
-
-          // 2) om inget intersectar: välj sektionen närmast toppen (tar hänsyn till header)
+        if (visible) {
+          targetId = visible.target.id;
+        } else {
           const closest = entries
             .map(e => ({ id: e.target.id, distance: Math.abs(e.boundingClientRect.top - 80) }))
             .sort((a, b) => a.distance - b.distance)[0];
+          if (closest) targetId = closest.id;
+        }
 
-          if (closest && currentSectionRef.current !== closest.id) {
-            currentSectionRef.current = closest.id;
-            setCurrentSection(closest.id);
-          }
-        });
+        if (!targetId) return;
+
+        // Om användaren nyligen klickade i menyn, lås valet så observer inte överskriver
+        if (userLockUntilRef.current > Date.now()) {
+          // behåll användarens val tills lock går ut
+          return;
+        }
+
+        // Debounce updates när användaren scrollar (300 ms)
+        if (scrollDebounceIdRef.current) {
+          window.clearTimeout(scrollDebounceIdRef.current);
+        }
+        scrollDebounceIdRef.current = window.setTimeout(() => {
+          scrollDebounceIdRef.current = null;
+          updateSection(targetId!);
+        }, 300);
       },
-      // justera rootMargin / threshold efter headerhöjd och känsla
-      { root: null, rootMargin: '-60px 0px -50% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] }
+      { root: null, rootMargin: '-80px 0px -50% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] }
     );
 
     ids.forEach((id) => {
@@ -53,7 +106,12 @@ function App() {
 
     return () => {
       observer.disconnect();
-      if (rafId) cancelAnimationFrame(rafId);
+      if (scrollDebounceIdRef.current) {
+        window.clearTimeout(scrollDebounceIdRef.current);
+      }
+      if (lockTimeoutRef.current) {
+        window.clearTimeout(lockTimeoutRef.current);
+      }
     };
   }, []);
 
@@ -68,6 +126,20 @@ function App() {
       return;
     }
 
+    // Markera användarens val direkt (så knappen tänds omedelbart)
+    userSelectedRef.current = sectionId;
+    userLockUntilRef.current = Date.now() + 1000; // lås i 1s så observer inte skriver över
+    if (lockTimeoutRef.current) window.clearTimeout(lockTimeoutRef.current);
+    lockTimeoutRef.current = window.setTimeout(() => {
+      userSelectedRef.current = null;
+      userLockUntilRef.current = 0;
+      lockTimeoutRef.current = null;
+    }, 1000);
+
+    // Uppdatera state omedelbart så menymarkeringen inte "hoppar"
+    currentSectionRef.current = sectionId;
+    setCurrentSection(sectionId);
+
     // Stäng mobilmenyn först så layouten inte ändras efter scrollning
     setIsMenuOpen(false);
 
@@ -76,6 +148,7 @@ function App() {
     setTimeout(() => {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 100);
+
   };
 
   return (
@@ -89,29 +162,45 @@ function App() {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-12">
-              <button onClick={() => scrollToSection('hem')} 
-                  className={`text-lg font-medium transition-colors ${currentSection === 'hem' ? 'bg-stone-800 text-white px-6 py-3 rounded-lg hover:bg-stone-900' : 'text-stone-700 hover:text-stone-900'}`}>
+            {/* <nav className="hidden md:flex space-x-12">
+              <button onClick={() => scrollToSection('hem')}
+                className={`text-lg font-medium transition-colors ${currentSection === 'hem' ? 'bg-stone-800 text-white px-6 py-3 rounded-lg hover:bg-stone-900' : 'text-stone-700 hover:text-stone-900'}`}>
                 Hem
               </button>
-              <button onClick={() => scrollToSection('sortiment')} 
+              <button onClick={() => scrollToSection('sortiment')}
                 className={`text-lg font-medium transition-colors ${currentSection === 'sortiment' ? 'bg-stone-800 text-white px-6 py-3 rounded-lg hover:bg-stone-900' : 'text-stone-700 hover:text-stone-900'}`}>
                 Sortiment
               </button>
-              <button onClick={() => scrollToSection('vem-ar-jag')}
-                className={`text-lg font-medium transition-colors ${currentSection === 'vem-ar-jag' ? 'bg-stone-800 text-white px-6 py-3 rounded-lg hover:bg-stone-900' : 'text-stone-700 hover:text-stone-900'}`}>
+              <button onClick={() => scrollToSection('vem_ar_jag')}
+                className={`text-lg font-medium transition-colors ${currentSection === 'vem_ar_jag' ? 'bg-stone-800 text-white px-6 py-3 rounded-lg hover:bg-stone-900' : 'text-stone-700 hover:text-stone-900'}`}>
                 Vem är jag?
               </button>
-              <button onClick={() => scrollToSection('hur-det-fungerar')} 
-                className={`text-lg font-medium transition-colors ${currentSection === 'hur-det-fungerar' ? 'bg-stone-800 text-white px-6 py-3 rounded-lg hover:bg-stone-900' : 'text-stone-700 hover:text-stone-900'}`}>
+              <button onClick={() => scrollToSection('hur_det_fungerar')}
+                className={`text-lg font-medium transition-colors ${currentSection === 'hur_det_fungerar' ? 'bg-stone-800 text-white px-6 py-3 rounded-lg hover:bg-stone-900' : 'text-stone-700 hover:text-stone-900'}`}>
                 Hur gör man?
               </button>
-              <button onClick={() => scrollToSection('kontakt')} 
+              <button onClick={() => scrollToSection('kontakt')}
                 className={`text-lg font-medium transition-colors ${currentSection === 'kontakt' ? 'bg-stone-800 text-white px-6 py-3 rounded-lg hover:bg-stone-900' : 'text-stone-700 hover:text-stone-900'}`}>
                 Kontakt
               </button>
-            </nav>
+            </nav> */}
 
+            <nav className="hidden md:flex space-x-4 items-center">
+              {['hem','sortiment','vem_ar_jag','hur_det_fungerar','kontakt'].map(id => {
+                const label = id === 'hem' ? 'Hem' : id === 'sortiment' ? 'Sortiment' : id === 'vem_ar_jag' ? 'Vem är jag?' : id === 'hur_det_fungerar' ? 'Hur gör man?' : 'Kontakt';
+                const isActive = currentSection === id;
+                return (
+                  <button
+                    key={id}
+                    onClick={() => scrollToSection(id)}
+                    aria-current={isActive ? 'page' : undefined}
+                    className={`text-lg font-medium transition-all duration-200 px-6 py-3 rounded-lg ${isActive ? 'bg-stone-800 text-white ring-2 ring-stone-900' : 'text-stone-700 hover:bg-stone-100 hover:text-stone-900'}`}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
+            </nav>
             {/* Mobile menu button */}
             <div className="md:hidden">
               <button
@@ -127,24 +216,44 @@ function App() {
           {isMenuOpen && (
             <div className="md:hidden bg-white border-t border-stone-100">
               <div className="px-2 pt-2 pb-3 space-y-1">
-                <button onClick={() => scrollToSection('hem')} 
+                {/* <button onClick={() => scrollToSection('hem')}
                   className={`block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg ${currentSection === 'hem' ? 'text-stone-900' : ''}`}>
                   Hem
                 </button>
-                <button onClick={() => scrollToSection('sortiment')} 
+                <button onClick={() => scrollToSection('sortiment')}
                   className={`block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg ${currentSection === 'sortiment' ? 'text-stone-900' : ''}`}>
                   Sortiment
                 </button>
-                <button onClick={() => scrollToSection('vem-ar-jag')} 
-                  className={`block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg ${currentSection === 'vem-ar-jag' ? 'text-stone-900' : ''}`}>
+                <button onClick={() => scrollToSection('vem_ar_jag')}
+                  className={`block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg ${currentSection === 'vem_ar_jag' ? 'text-stone-900' : ''}`}>
                   Vem är jag?
                 </button>
-                <button onClick={() => scrollToSection('hur-det-fungerar')} 
-                  className={`block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg ${currentSection === 'hur-det-fungerar' ? 'text-stone-900' : ''}`}>
+                <button onClick={() => scrollToSection('hur_det_fungerar')}
+                  className={`block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg ${currentSection === 'hur_det_fungerar' ? 'text-stone-900' : ''}`}>
                   Process
                 </button>
-                <button onClick={() => scrollToSection('kontakt')} 
+                <button onClick={() => scrollToSection('kontakt')}
                   className={`block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg ${currentSection === 'kontakt' ? 'text-stone-900' : ''}`}>
+                  Kontakt
+                </button> */}
+                <button onClick={() => scrollToSection('hem')}
+                  className={`block w-full text-left px-3 py-3 text-lg font-medium rounded ${currentSection === 'hem' ? 'bg-stone-100 text-stone-900' : 'text-stone-700 hover:bg-stone-50 hover:text-stone-900'}`}>
+                  Hem
+                </button>
+                <button onClick={() => scrollToSection('sortiment')}
+                  className={`block w-full text-left px-3 py-3 text-lg font-medium rounded ${currentSection === 'sortiment' ? 'bg-stone-100 text-stone-900' : 'text-stone-700 hover:bg-stone-50 hover:text-stone-900'}`}>
+                  Sortiment
+                </button>
+                <button onClick={() => scrollToSection('vem_ar_jag')}
+                  className={`block w-full text-left px-3 py-3 text-lg font-medium rounded ${currentSection === 'vem_ar_jag' ? 'bg-stone-100 text-stone-900' : 'text-stone-700 hover:bg-stone-50 hover:text-stone-900'}`}>
+                  Vem är jag?
+                </button>
+                <button onClick={() => scrollToSection('hur_det_fungerar')}
+                  className={`block w-full text-left px-3 py-3 text-lg font-medium rounded ${currentSection === 'hur_det_fungerar' ? 'bg-stone-100 text-stone-900' : 'text-stone-700 hover:bg-stone-50 hover:text-stone-900'}`}>
+                  Hur det fungerar
+                </button>
+                <button onClick={() => scrollToSection('kontakt')}
+                  className={`block w-full text-left px-3 py-3 text-lg font-medium rounded ${currentSection === 'kontakt' ? 'bg-stone-100 text-stone-900' : 'text-stone-700 hover:bg-stone-50 hover:text-stone-900'}`}>
                   Kontakt
                 </button>
               </div>
@@ -207,7 +316,7 @@ function App() {
       </section>
 
       {/* Vem är jag Section */}
-      <section id="vem-ar-jag" className="py-24 bg-stone-50 scroll-mt-20">
+      <section id="vem_ar_jag" className="py-24 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold text-stone-800 mb-6">
@@ -221,7 +330,7 @@ function App() {
       </section>
 
       {/* Process Section */}
-      <section id="hur-det-fungerar" className="py-24 bg-white scroll-mt-20">
+      <section id="hur_det_fungerar" className="py-24 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold text-stone-800 mb-6">
