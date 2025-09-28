@@ -94,22 +94,6 @@ function App() {
             Professionell festuthyrning för alla tillfällen. Jag levererar kvalitet, elegans och trygghet 
             så att du kan fokusera på det som verkligen betyder något – dina gäster och minnen som skapas.
           </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <button 
-              onClick={() => scrollToSection('produkter')}
-              className="bg-stone-800 text-white px-10 py-4 rounded-lg font-semibold text-lg hover:bg-stone-900 transform hover:scale-105 transition-all duration-200 shadow-lg flex items-center justify-center"
-            >
-              Utforska sortiment
-              <ArrowRight className="ml-3 h-5 w-5" />
-            </button>
-            <button 
-              onClick={() => scrollToSection('kontakt')}
-              className="border-2 border-stone-800 text-stone-800 px-10 py-4 rounded-lg font-semibold text-lg hover:bg-stone-800 hover:text-white transition-all duration-200 flex items-center justify-center"
-            >
-              <Phone className="mr-3 h-5 w-5" />
-              Ring direkt
-            </button>
-          </div>
         </div>
       </section>
 
