@@ -265,105 +265,35 @@ function App() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-             <h3 className="text-2xl font-semibold text-gray-900 mb-6 font-elegant">Kontaktinformation</h3>
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <Phone className="h-6 w-6 text-amber-600 mr-4 mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold text-gray-900">Telefon</p>
-                    <p className="text-gray-600">0XX-XXX XX XX</p>
+            <div className="lg:col-span-2">
+              <div className="max-w-2xl mx-auto">
+                <h3 className="text-2xl font-semibold text-gray-900 mb-8 font-elegant text-center">Kontaktinformation</h3>
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Phone className="h-8 w-8 text-amber-600" />
+                    </div>
+                    <h4 className="text-xl font-semibold text-gray-900 mb-2">Ring oss</h4>
+                    <p className="text-2xl font-bold text-amber-600 mb-2">0XX-XXX XX XX</p>
+                    <p className="text-gray-600">Vardagar 9-17</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Mail className="h-8 w-8 text-blue-600" />
+                    </div>
+                    <h4 className="text-xl font-semibold text-gray-900 mb-2">E-post</h4>
+                    <p className="text-xl font-semibold text-blue-600 mb-2">info@festuthyrning.se</p>
+                    <p className="text-gray-600">Vi svarar inom 24h</p>
                   </div>
                 </div>
-                <div className="flex items-start">
-                  <Mail className="h-6 w-6 text-amber-600 mr-4 mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold text-gray-900">E-post</p>
-                    <p className="text-gray-600">info@festuthyrning.se</p>
+                <div className="text-center mt-8 pt-8 border-t border-gray-200">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <MapPin className="h-8 w-8 text-green-600" />
                   </div>
-                </div>
-                <div className="flex items-start">
-                  <MapPin className="h-6 w-6 text-amber-600 mr-4 mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold text-gray-900">Adress</p>
-                    <p className="text-gray-600">Exempelgatan 123<br />123 45 Stad</p>
-                  </div>
+                  <h4 className="text-xl font-semibold text-gray-900 mb-2">Besök oss</h4>
+                  <p className="text-gray-600">Exempelgatan 123<br />123 45 Stad</p>
                 </div>
               </div>
-            </div>
-
-            <div className="bg-white rounded-xl p-8 shadow-sm">
-             <h3 className="text-2xl font-semibold text-gray-900 mb-6 font-elegant">Skicka meddelande</h3>
-              <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      Namn
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200"
-                      placeholder="Ditt namn"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      E-post
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200"
-                      placeholder="din@email.se"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                    Telefon
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200"
-                    placeholder="0XX-XXX XX XX"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="event-type" className="block text-sm font-medium text-gray-700 mb-2">
-                    Typ av evenemang
-                  </label>
-                  <select
-                    id="event-type"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200"
-                  >
-                    <option value="">Välj typ av evenemang</option>
-                    <option value="brölloþ">Bröllop</option>
-                    <option value="fest">Fest/Kalas</option>
-                    <option value="minnesstund">Minnesstund/Begravning</option>
-                    <option value="foretag">Företagsevent</option>
-                    <option value="annat">Annat</option>
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Meddelande
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200 resize-none"
-                    placeholder="Berätta om ditt evenemang och vad du behöver hjälp med..."
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-amber-600 text-white px-6 py-4 rounded-lg font-semibold text-lg hover:bg-amber-700 transform hover:scale-[1.02] transition-all duration-200 shadow-lg"
-                >
-                  Skicka meddelande
-                </button>
-              </form>
             </div>
           </div>
         </div>
