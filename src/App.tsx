@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
 import headerimg from './images/bg_4.png';
 import NgkTitleSubtitle from './components/NgkTitleSubtitle';
@@ -6,16 +6,76 @@ import NgkTitleSubtitle from './components/NgkTitleSubtitle';
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const [currentSection, setCurrentSection] = useState<string>('');
+  const currentSectionRef = useRef<string>('');
+
+  useEffect(() => {
+    const ids = ['hem', 'sortiment', 'vem-ar-jag', 'tillfallen', 'hur-det-fungerar', 'kontakt'];
+    let rafId: number | null = null;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+          // 1) välj det element som syns mest
+          const visible = entries
+            .filter(e => e.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+          if (visible) {
+            const id = visible.target.id;
+            if (currentSectionRef.current !== id) {
+              currentSectionRef.current = id;
+              setCurrentSection(id);
+            }
+            return;
+          }
+
+          // 2) om inget intersectar: välj sektionen närmast toppen (tar hänsyn till header)
+          const closest = entries
+            .map(e => ({ id: e.target.id, distance: Math.abs(e.boundingClientRect.top - 80) }))
+            .sort((a, b) => a.distance - b.distance)[0];
+
+          if (closest && currentSectionRef.current !== closest.id) {
+            currentSectionRef.current = closest.id;
+            setCurrentSection(closest.id);
+          }
+        });
+      },
+      // justera rootMargin / threshold efter headerhöjd och känsla
+      { root: null, rootMargin: '-60px 0px -50% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] }
+    );
+
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      observer.disconnect();
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, []);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (!element) {
+      setIsMenuOpen(false);
+      return;
     }
+
+    // Stäng mobilmenyn först så layouten inte ändras efter scrollning
     setIsMenuOpen(false);
+
+    // Vänta kort så header/menu har blivit stängd och layouten stabil
+    // Justera timeout vid behov (50–200 ms)
+    setTimeout(() => {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
   };
 
   return (
@@ -30,16 +90,24 @@ function App() {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-12">
-              <button onClick={() => scrollToSection('hem')} className="text-stone-700 hover:text-stone-900 font-medium transition-colors text-lg">
+              <button onClick={() => scrollToSection('hem')} 
+                  className={`text-lg font-medium transition-colors ${currentSection === 'hem' ? 'bg-stone-800 text-white px-6 py-3 rounded-lg hover:bg-stone-900' : 'text-stone-700 hover:text-stone-900'}`}>
                 Hem
               </button>
-              <button onClick={() => scrollToSection('sortiment')} className="text-stone-700 hover:text-stone-900 font-medium transition-colors text-lg">
+              <button onClick={() => scrollToSection('sortiment')} 
+                className={`text-lg font-medium transition-colors ${currentSection === 'sortiment' ? 'bg-stone-800 text-white px-6 py-3 rounded-lg hover:bg-stone-900' : 'text-stone-700 hover:text-stone-900'}`}>
                 Sortiment
               </button>
-              <button onClick={() => scrollToSection('hur-det-fungerar')} className="text-stone-700 hover:text-stone-900 font-medium transition-colors text-lg">
+              <button onClick={() => scrollToSection('vem-ar-jag')}
+                className={`text-lg font-medium transition-colors ${currentSection === 'vem-ar-jag' ? 'bg-stone-800 text-white px-6 py-3 rounded-lg hover:bg-stone-900' : 'text-stone-700 hover:text-stone-900'}`}>
+                Vem är jag?
+              </button>
+              <button onClick={() => scrollToSection('hur-det-fungerar')} 
+                className={`text-lg font-medium transition-colors ${currentSection === 'hur-det-fungerar' ? 'bg-stone-800 text-white px-6 py-3 rounded-lg hover:bg-stone-900' : 'text-stone-700 hover:text-stone-900'}`}>
                 Hur gör man?
               </button>
-              <button onClick={() => scrollToSection('kontakt')} className="bg-stone-800 text-white px-6 py-3 rounded-lg font-medium hover:bg-stone-900 transition-colors">
+              <button onClick={() => scrollToSection('kontakt')} 
+                className={`text-lg font-medium transition-colors ${currentSection === 'kontakt' ? 'bg-stone-800 text-white px-6 py-3 rounded-lg hover:bg-stone-900' : 'text-stone-700 hover:text-stone-900'}`}>
                 Kontakt
               </button>
             </nav>
@@ -59,16 +127,24 @@ function App() {
           {isMenuOpen && (
             <div className="md:hidden bg-white border-t border-stone-100">
               <div className="px-2 pt-2 pb-3 space-y-1">
-                <button onClick={() => scrollToSection('hem')} className="block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg">
+                <button onClick={() => scrollToSection('hem')} 
+                  className={`block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg ${currentSection === 'hem' ? 'text-stone-900' : ''}`}>
                   Hem
                 </button>
-                <button onClick={() => scrollToSection('sortiment')} className="block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg">
+                <button onClick={() => scrollToSection('sortiment')} 
+                  className={`block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg ${currentSection === 'sortiment' ? 'text-stone-900' : ''}`}>
                   Sortiment
                 </button>
-                <button onClick={() => scrollToSection('hur-det-fungerar')} className="block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg">
+                <button onClick={() => scrollToSection('vem-ar-jag')} 
+                  className={`block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg ${currentSection === 'vem-ar-jag' ? 'text-stone-900' : ''}`}>
+                  Vem är jag?
+                </button>
+                <button onClick={() => scrollToSection('hur-det-fungerar')} 
+                  className={`block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg ${currentSection === 'hur-det-fungerar' ? 'text-stone-900' : ''}`}>
                   Process
                 </button>
-                <button onClick={() => scrollToSection('kontakt')} className="block w-full text-left px-3 py-3 bg-stone-800 text-white font-medium rounded-lg mx-3 mt-2">
+                <button onClick={() => scrollToSection('kontakt')} 
+                  className={`block w-full text-left px-3 py-3 text-stone-700 hover:text-stone-900 font-medium text-lg ${currentSection === 'kontakt' ? 'text-stone-900' : ''}`}>
                   Kontakt
                 </button>
               </div>
@@ -130,15 +206,15 @@ function App() {
         </div>
       </section>
 
-      {/* Tillfällen Section */}
-      <section id="tillfallen" className="py-24 bg-stone-50 scroll-mt-20">
+      {/* Vem är jag Section */}
+      <section id="vem-ar-jag" className="py-24 bg-stone-50 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold text-stone-800 mb-6">
-              Expertis för alla livets högtider
+              Vem är jag?
             </h2>
             <p className="text-xl text-stone-600 max-w-3xl mx-auto leading-relaxed">
-              Med år av erfarenhet hjälper jag dig skapa minnesvärda stunder, oavsett tillfälle
+              Jag är Nika.<br />Kvinnan som grundade av Nikas guldkant. <br />Med en passion för fest och service strävar jag efter att göra varje evenemang speciellt genom att erbjuda högkvalitativ uthyrning och personlig service.
             </p>
           </div>
         </div>
