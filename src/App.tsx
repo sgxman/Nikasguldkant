@@ -135,56 +135,6 @@ function App() {
               Med år av erfarenhet hjälper jag dig skapa minnesvärda stunder, oavsett tillfälle
             </p>
           </div>
-
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="bg-white rounded-2xl p-10 shadow-sm hover:shadow-lg transition-all duration-300">
-              <h3 className="text-3xl font-semibold text-stone-800 mb-6">Bröllop & Ceremonier</h3>
-              <p className="text-stone-600 text-lg leading-relaxed mb-6">
-                Din stora dag förtjänar perfektion. Jag skapar en elegant och harmonisk dukning som speglar er kärlek och stil.
-              </p>
-              <div className="text-stone-500">
-                <p>• Komplett bröllopsutrustning</p>
-                <p>• Personlig konsultation</p>
-                <p>• Leverans och upphämtning</p>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl p-10 shadow-sm hover:shadow-lg transition-all duration-300">
-              <h3 className="text-3xl font-semibold text-stone-800 mb-6">Företagsevent</h3>
-              <p className="text-stone-600 text-lg leading-relaxed mb-6">
-                Professionella lösningar för konferenser, mingel och företagsfester. Kvalitet som stärker ert varumärke.
-              </p>
-              <div className="text-stone-500">
-                <p>• Skalbar för alla storlekar</p>
-                <p>• Diskret och professionell service</p>
-                <p>• Flexibla leveransalternativ</p>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl p-10 shadow-sm hover:shadow-lg transition-all duration-300">
-              <h3 className="text-3xl font-semibold text-stone-800 mb-6">Privata Fester</h3>
-              <p className="text-stone-600 text-lg leading-relaxed mb-6">
-                Från intima middagar till stora kalas. Jag hjälper dig skapa den perfekta atmosfären för dina gäster.
-              </p>
-              <div className="text-stone-500">
-                <p>• Anpassat efter din stil</p>
-                <p>• Alla typer av fester</p>
-                <p>• Personlig rådgivning</p>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl p-10 shadow-sm hover:shadow-lg transition-all duration-300">
-              <h3 className="text-3xl font-semibold text-stone-800 mb-6">Minnesstunder</h3>
-              <p className="text-stone-600 text-lg leading-relaxed mb-6">
-                Värdiga och stilrena lösningar för begravningar och minnesgudstjänster. Diskret service i svåra stunder.
-              </p>
-              <div className="text-stone-500">
-                <p>• Respektfull hantering</p>
-                <p>• Traditionell elegans</p>
-                <p>• Omtänksam service</p>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
