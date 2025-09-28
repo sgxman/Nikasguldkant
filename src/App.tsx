@@ -34,9 +34,6 @@ function App() {
               <button onClick={() => scrollToSection('produkter')} className="text-stone-700 hover:text-stone-900 font-medium transition-colors text-lg">
                 Produkter
               </button>
-              <button onClick={() => scrollToSection('tillfallen')} className="text-stone-700 hover:text-stone-900 font-medium transition-colors text-lg">
-                Tillfällen
-              </button>
               <button onClick={() => scrollToSection('hur-det-fungerar')} className="text-stone-700 hover:text-stone-900 font-medium transition-colors text-lg">
                 Process
               </button>
