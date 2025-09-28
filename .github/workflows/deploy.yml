@@ -1,4 +1,4 @@
-name: Build and Deploy React App
+name: Build and Deploy Vite App
 
 on:
   push:
@@ -9,7 +9,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: write    # Viktigt!    
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -25,10 +25,9 @@ jobs:
       - name: Build
         run: npm run build
 
-      # Publicera till gh-pages-branch (kräver gh-pages som dependency: npm install --save-dev gh-pages)
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: ./dist
           publish_branch: gh-pages
