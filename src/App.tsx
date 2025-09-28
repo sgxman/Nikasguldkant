@@ -23,8 +23,7 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Wine className="h-8 w-8 text-amber-600 mr-2" />
-              <span className="text-xl font-logo text-gray-900">Nikas guldkant</span>
+              <span className="text-2xl font-logo text-gray-900">Nikas guldkant</span>
             </div>
             
             {/* Desktop Navigation */}
@@ -105,10 +104,9 @@ function App() {
             </button>
             <button 
               onClick={() => scrollToSection('kontakt')}
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-gray-900 transition-all duration-200 flex items-center justify-center shadow-xl backdrop-blur-sm"
+              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-gray-900 transition-all duration-200 flex items-center justify-center shadow-xl backdrop-blur-sm font-elegant"
             >
-              <Phone className="mr-2 h-5 w-5" />
-              Kontakta oss
+              Kontakta mig
             </button>
           </div>
         </div>
@@ -132,33 +130,31 @@ function App() {
                 <Wine className="h-8 w-8 text-amber-600" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3 font-elegant">Porslin & glas</h3>
-              <p className="text-gray-600">Tallrikar, glas, muggar, karaffer och elegant servering</p>
+              <p className="text-gray-600 font-elegant">Tallrikar, glas, muggar, karaffer och elegant servering</p>
             </div>
 
             <div className="bg-gradient-to-br from-blue-50 to-sky-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow duration-300">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Utensils className="h-8 w-8 text-blue-600" />
+                <span className="text-2xl">🍽️</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3 font-elegant">Bestick & servering</h3>
-              <p className="text-gray-600">Knivar, gafflar, skedar och vackra uppläggningsfat</p>
+              <p className="text-gray-600 font-elegant">Knivar, gafflar, skedar och vackra uppläggningsfat</p>
             </div>
 
             <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow duration-300">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-8 h-8 bg-green-600 rounded-sm flex items-center justify-center">
-                  <div className="w-6 h-1 bg-white rounded"></div>
-                </div>
+                <span className="text-2xl">🧺</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3 font-elegant">Textilier</h3>
-              <p className="text-gray-600">Dukar, servetter, filtar och linne för perfekt dukning</p>
+              <p className="text-gray-600 font-elegant">Dukar, servetter, filtar och linne för perfekt dukning</p>
             </div>
 
             <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow duration-300">
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-8 h-8 text-purple-600">⚱️</div>
+                <span className="text-2xl">🕯️</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3 font-elegant">Tillbehör</h3>
-              <p className="text-gray-600">Ljusstakar, termosar, skålar och andra festtillbehör</p>
+              <p className="text-gray-600 font-elegant">Ljusstakar, termosar, skålar och andra festtillbehör</p>
             </div>
           </div>
         </div>
@@ -169,36 +165,36 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Vi hjälper dig vid alla typer av tillställningar
+              Jag hjälper dig vid alla typer av tillställningar
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Från intima middagar till stora celebrationer – vi har erfarenheten och utrustningen
+              Från intima middagar till stora celebrationer – jag har erfarenheten och utrustningen
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
-              <Heart className="h-12 w-12 text-rose-500 mb-4" />
+              <span className="text-4xl mb-4 block">💒</span>
               <h3 className="text-2xl font-semibold text-gray-900 mb-3 font-elegant">Bröllop</h3>
-              <p className="text-gray-600 text-lg">Elegant dukning för den stora dagen. Vi hjälper er skapa minnen som varar för evigt.</p>
+              <p className="text-gray-600 text-lg font-elegant">Elegant dukning för den stora dagen. Jag hjälper er skapa minnen som varar för evigt.</p>
             </div>
 
             <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
-              <Wine className="h-12 w-12 text-amber-500 mb-4" />
+              <span className="text-4xl mb-4 block">🎉</span>
               <h3 className="text-2xl font-semibold text-gray-900 mb-3 font-elegant">Fester & kalas</h3>
-              <p className="text-gray-600 text-lg">Stort som smått – vi har utrustning för alla typer av festligheter och celebrationer.</p>
+              <p className="text-gray-600 text-lg font-elegant">Stort som smått – jag har utrustning för alla typer av festligheter och celebrationer.</p>
             </div>
 
             <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
-              <div className="h-12 w-12 text-gray-500 mb-4 text-2xl">🕊️</div>
+              <span className="text-4xl mb-4 block">🕊️</span>
               <h3 className="text-2xl font-semibold text-gray-900 mb-3 font-elegant">Minnesstunder & begravningar</h3>
-              <p className="text-gray-600 text-lg">Stilrent och diskret för värdiga minnesstunder i svåra stunder.</p>
+              <p className="text-gray-600 text-lg font-elegant">Stilrent och diskret för värdiga minnesstunder i svåra stunder.</p>
             </div>
 
             <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
-              <Building2 className="h-12 w-12 text-blue-500 mb-4" />
+              <span className="text-4xl mb-4 block">🏢</span>
               <h3 className="text-2xl font-semibold text-gray-900 mb-3 font-elegant">Företagsevent</h3>
-              <p className="text-gray-600 text-lg">Mingel, konferens eller firmafest – professionell service för företagstillställningar.</p>
+              <p className="text-gray-600 text-lg font-elegant">Mingel, konferens eller firmafest – professionell service för företagstillställningar.</p>
             </div>
           </div>
         </div>
@@ -212,41 +208,41 @@ function App() {
               Enkelt och smidigt – så här går det till
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Vi gör processen så enkel som möjligt så du kan fokusera på det viktiga – din fest
+              Jag gör processen så enkel som möjligt så du kan fokusera på det viktiga – din fest
             </p>
           </div>
 
           <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold text-amber-600">1</span>
+                <span className="text-3xl">📋</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3 font-elegant">Välj produkter</h3>
-              <p className="text-gray-600">Kontakta oss så hjälper vi dig välja rätt produkter för ditt evenemang</p>
+              <p className="text-gray-600 font-elegant">Kontakta mig så hjälper jag dig välja rätt produkter för ditt evenemang</p>
             </div>
 
             <div className="text-center">
               <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Truck className="h-10 w-10 text-blue-600" />
+                <span className="text-3xl">🚚</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3 font-elegant">Leverans</h3>
-              <p className="text-gray-600">Vi levererar eller du hämtar själv – vi anpassar oss efter dina behov</p>
+              <p className="text-gray-600 font-elegant">Jag levererar eller du hämtar själv – jag anpassar mig efter dina behov</p>
             </div>
 
             <div className="text-center">
               <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Wine className="h-10 w-10 text-green-600" />
+                <span className="text-3xl">🥂</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3 font-elegant">Njut av festen</h3>
-              <p className="text-gray-600">Använd utrustningen och fokusera på att ha en fantastisk fest</p>
+              <p className="text-gray-600 font-elegant">Använd utrustningen och fokusera på att ha en fantastisk fest</p>
             </div>
 
             <div className="text-center">
               <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle className="h-10 w-10 text-purple-600" />
+                <span className="text-3xl">✨</span>
               </div>
              <h3 className="text-xl font-semibold text-gray-900 mb-3 font-elegant">Lämna tillbaka</h3>
-              <p className="text-gray-600">Lämna tillbaka odiskat – vi sköter disken så du slipper</p>
+              <p className="text-gray-600 font-elegant">Lämna tillbaka odiskat – jag sköter disken så du slipper</p>
             </div>
           </div>
         </div>
@@ -257,10 +253,10 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Boka eller fråga oss direkt
+              Boka eller fråga mig direkt
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Ring oss, mejla eller fyll i vårt formulär så hjälper vi dig att planera din beställning
+              Ring mig så hjälper jag dig att planera din beställning
             </p>
           </div>
 
@@ -270,9 +266,9 @@ function App() {
                 <h3 className="text-2xl font-semibold text-gray-900 mb-8 font-elegant text-center">Kontaktinformation</h3>
                 <div className="text-center">
                   <div className="w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Phone className="h-10 w-10 text-amber-600" />
+                    <span className="text-3xl">📞</span>
                   </div>
-                  <h4 className="text-2xl font-semibold text-gray-900 mb-4 font-elegant">Ring oss</h4>
+                  <h4 className="text-2xl font-semibold text-gray-900 mb-4 font-elegant">Ring mig</h4>
                   <p className="text-3xl font-bold text-amber-600 mb-3">0XX-XXX XX XX</p>
                   <p className="text-lg text-gray-600">Vardagar 9-17</p>
                 </div>
@@ -287,7 +283,6 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="flex items-center justify-center mb-4">
-              <Wine className="h-8 w-8 text-amber-500 mr-2" />
               <span className="text-2xl font-logo">Nikas guldkant</span>
             </div>
             <p className="text-gray-400 mb-6">
